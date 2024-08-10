@@ -1,36 +1,33 @@
-/* Add animation for slideshow images */
-.slideshow img {
-    width: 100%;
-    display: block;
-    animation: fade 3s ease-in-out infinite;
-}
-
-@keyframes fade {
-    0% { opacity: 0; }
-    50% { opacity: 1; }
-    100% { opacity: 0; }
-}
-
-/* Add hover effects for banner links */
-.banner a {
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.banner a:hover {
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #000000;
     color: #ffffff;
-    transform: scale(1.1);
 }
 
-/* Chat send button hover effect */
-#sendButton {
+#slideshow img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+#slideshow img.active {
+    opacity: 1;
+}
+
+#chat-box {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+#chat-header {
     background-color: #fc2003;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
+    padding: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-#sendButton:hover {
-    background-color: #e60000;
+#chat-content {
+    display: none;
+    background-color: #333333;
 }
