@@ -1,40 +1,36 @@
-body {
-    background-color: #121212;
-    color: #ffffff;
-    font-family: Arial, sans-serif;
-}
-
-header {
-    background-color: #1e1e1e;
-    padding: 20px;
-    text-align: center;
-}
-
-.banner a {
-    color: #fc2003;
-    text-decoration: none;
-    margin: 0 15px;
-}
-
-.banner a:hover {
-    text-decoration: underline;
-}
-
-.slideshow {
-    margin: 50px auto;
-    max-width: 1000px;
-    overflow: hidden;
-    position: relative;
-}
-
+/* Add animation for slideshow images */
 .slideshow img {
     width: 100%;
     display: block;
+    animation: fade 3s ease-in-out infinite;
 }
 
-footer {
-    background-color: #1e1e1e;
-    padding: 10px;
-    text-align: center;
-    color: #fc2003;
+@keyframes fade {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Add hover effects for banner links */
+.banner a {
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.banner a:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+/* Chat send button hover effect */
+#sendButton {
+    background-color: #fc2003;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#sendButton:hover {
+    background-color: #e60000;
 }

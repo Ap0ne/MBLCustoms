@@ -1,32 +1,34 @@
-window.fbAsyncInit = function () {
-    FB.init({
-        appId: '1227894721987901',
-        cookie: true,
-        xfbml: true,
-        version: 'v11.0'
-    });
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
 
-    FB.AppEvents.logPageView();
+const chatWindow = document.getElementById('chatWindow');
+const chatInput = document.getElementById('chatInput');
+const sendButton = document.getElementById('sendButton');
 
-    checkEmployeeStatus();
-};
+// Listen for new messages
+db.ref('messages').on('child_added', function(snapshot) {
+    const message = snapshot.val();
+    displayMessage(message);
+});
 
-function checkEmployeeStatus() {
-    const employeeIds = ['100011102584965', '61559668452847', '61561680346129'];
-
-    employeeIds.forEach(id => {
-        FB.api(`/${id}`, function (response) {
-            if (response && !response.error) {
-                console.log(`${response.name} is ${response.is_verified ? 'active' : 'inactive'}`);
-            }
+// Send message to Firebase
+sendButton.addEventListener('click', function() {
+    const message = chatInput.value.trim();
+    if (message !== '') {
+        db.ref('messages').push({
+            sender: 'User',
+            text: message,
+            timestamp: Date.now()
         });
-    });
-}
-
-document.getElementById('sendButton').addEventListener('click', function () {
-    const message = document.getElementById('chatInput').value;
-    if (message.trim() !== '') {
-        document.getElementById('chatWindow').innerHTML += `<div>${message}</div>`;
-        document.getElementById('chatInput').value = '';
+        chatInput.value = '';
     }
 });
+
+// Display message in chat window
+function displayMessage(message) {
+    const messageElement = document.createElement('div');
+    messageElement.textContent = `${message.sender}: ${message.text}`;
+    chatWindow.appendChild(messageElement);
+    chatWindow.scrollTop = chatWindow.scrollHeight; // Auto-scroll to bottom
+}
