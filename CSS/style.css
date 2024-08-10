@@ -1,0 +1,40 @@
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #1e1e1e;
+    padding: 20px;
+    text-align: center;
+}
+
+.banner a {
+    color: #fc2003;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+.banner a:hover {
+    text-decoration: underline;
+}
+
+.slideshow {
+    margin: 50px auto;
+    max-width: 1000px;
+    overflow: hidden;
+    position: relative;
+}
+
+.slideshow img {
+    width: 100%;
+    display: block;
+}
+
+footer {
+    background-color: #1e1e1e;
+    padding: 10px;
+    text-align: center;
+    color: #fc2003;
+}
