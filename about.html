@@ -1,35 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - MBLCustoms</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-    <header>
-        <h1>About MBLCustoms</h1>
-    </header>
+// JS/about.js
 
-    <main>
-        <div class="employees">
-            <div class="employee">
-                <img src="assets/images/MBLEmployees/MBLKen/MBLKen.jpg" alt="MBL Ken">
-                <h3>MBL Ken</h3>
-            </div>
-            <div class="employee">
-                <img src="assets/images/MBLEmployees/MBLJetlyfe/MBLJetlyfe.jpg" alt="MBL Jetlyfe">
-                <h3>MBL Jetlyfe</h3>
-            </div>
-            <div class="employee">
-                <img src="assets/images/MBLEmployees/MBLCrash/MBLCrash.jpg" alt="MBL Crash">
-                <h3>MBL Crash</h3>
-            </div>
-        </div>
-    </main>
+const employees = [
+  {
+    name: "MBL Ken",
+    trade: "Frame Builder",
+    imageUrl: "https://raw.githubusercontent.com/Ap0ne/MBLCustoms/main/assets/images/MBLEmployees/MBLKen/MBLKen.jpg",
+    description: "MBL Ken is a master frame builder, specializing in custom minibike frames."
+  },
+  {
+    name: "MBL Jetlyfe",
+    trade: "Painter",
+    imageUrl: "https://raw.githubusercontent.com/Ap0ne/MBLCustoms/main/assets/images/MBLEmployees/MBLJetlyfe/MBLJetlyfe.jpg",
+    description: "MBL Jetlyfe brings minibike paint jobs to life with vibrant, custom colors."
+  },
+  {
+    name: "MBL Crash",
+    trade: "Mechanic",
+    imageUrl: "https://raw.githubusercontent.com/Ap0ne/MBLCustoms/main/assets/images/MBLEmployees/MBLCrash/MBLCrash.jpg",
+    description: "MBL Crash is our lead mechanic, ensuring every engine is built to perfection."
+  }
+];
 
-    <footer>
-        <p>&copy; 2024 MBLCustoms</p>
-    </footer>
-</body>
-</html>
+function loadEmployees() {
+  const employeesContainer = document.getElementById('employees');
+  
+  employees.forEach(employee => {
+    const employeeCard = `
+      <div class="bg-gray-900 p-4 rounded-lg shadow-lg">
+        <img src="${employee.imageUrl}" alt="${employee.name}" class="w-full h-48 object-cover rounded-lg mb-4">
+        <h3 class="text-xl font-bold text-[#fc2003]">${employee.name}</h3>
+        <p class="text-lg font-semibold">${employee.trade}</p>
+        <p class="text-sm">${employee.description}</p>
+      </div>
+    `;
+    
+    employeesContainer.innerHTML += employeeCard;
+  });
+}
+
+document.addEventListener('DOMContentLoaded', loadEmployees);

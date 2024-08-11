@@ -74,3 +74,30 @@ body {
   height: 300px;
   overflow-y: auto;
 }
+/* CSS/style.css */
+
+#about {
+  padding-top: 80px; /* To avoid overlap with fixed header */
+}
+
+#employees {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  #employees {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  #employees {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.bg-gray-900 {
+  background-color: #1a1a1a;
+}
